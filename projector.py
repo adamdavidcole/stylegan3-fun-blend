@@ -144,7 +144,7 @@ def project(
         buf[:] = torch.randn_like(buf)
         buf.requires_grad = True
 
-    for step in range(num_steps):
+    for step in tqdm(range(num_steps)):
         # Learning rate schedule.
         t = step / num_steps
         w_noise_scale = w_std * initial_noise_factor * max(0.0, 1.0 - t / noise_ramp_length) ** 2
